@@ -9,6 +9,15 @@ exports.getProductById = (req, res) => {
     product ? res.json(product) : res.status(404).json({ message: "Not found" });
 };
 
+exports.getProductBySlug = (req, res) => {
+    const product = productModel.getBySlug(req.params.slug);
+    if (product) {
+        res.json(product);
+    } else {
+        res.status(404).json({ message: "Product not found with that slug" });
+    }
+};
+
 exports.addProduct = (req, res) => {
     const newProduct = productModel.add(req.body);
     res.status(201).json(newProduct);

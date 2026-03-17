@@ -1,13 +1,14 @@
-[
-  {
-    "id": 1,
-    "productName": "Wireless Mouse",
-    "slug": "wireless-mouse",
-    "price": 800,
-    "category": "Electronics",
-    "stock": 10
-  },
-  {
+{
+  "products": [
+    {
+      "id": 1,
+      "productName": "Wireless Mouse",
+      "slug": "wireless-mouse",
+      "price": 800,
+      "category": "Electronics",
+      "stock": 10
+    },
+    {
     "id": 2,
     "productName": "Gaming Keyboard",
     "slug": "gaming-keyboard",
@@ -39,4 +40,11 @@
     "category": "Furniture",
     "stock": 2
   }
-]
+  ],
+  "categories": [
+    { "id": 1, "name": "Wireless Mouse", "description": "Computer accessories" },
+      { "id": 2, "name": "Gaming Keyboard", "description": "Gadgets and devices" },
+    { "id": 3, "name": "Ergonomic Chair", "description": "furniture" }
+  ],
+  "orders": []
+}

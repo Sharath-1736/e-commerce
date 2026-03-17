@@ -41,4 +41,9 @@ const remove = (id) => {
     return false;
 };
 
-module.exports = { getAll, getById, add, update, remove };
+//Get a product by its slug
+const getBySlug = (slug) => {
+    return readData().products.find(p => p.slug === slug);
+};
+
+module.exports = { getAll, getById, add, update, remove, getBySlug };
