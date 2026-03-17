@@ -1,13 +1,16 @@
 {
-  "name": "day-120326",
+  "name": "day-090326",
   "version": "1.0.0",
-  "description": "",
+  "description": "homepage",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "product": "node microservices/product-services/index.js ",
+    "order": "node microservices/order-services/index.js ",
+    "category":"node microservices/category-services/index.js "
   },
-  "keywords": [],
+  "keywords": ["node", "express", "microservices"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",

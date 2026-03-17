@@ -1,17 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const dbPath = path.join(__dirname, '../database.json');
-
-const readData = () => JSON.parse(fs.readFileSync(dbPath));
-const writeData = (data) => fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+const categoryModel = require('../models/categoryModel');
 
 exports.getAllCategories = (req, res) => {
-    res.json(readData().categories);
+    const categories = categoryModel.getAll();
+    res.json(categories);
 };
 
 exports.addCategory = (req, res) => {
-    const data = readData();
-    data.categories.push(req.body);
-    writeData(data);
-    res.status(201).json({ message: "Category added", category: req.body });
+    const newCategory = categoryModel.add(req.body);
+    res.status(201).json({ message: "Category added", category: newCategory });
 };
