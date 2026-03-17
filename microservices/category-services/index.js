@@ -1,22 +1,23 @@
 const express = require('express');
 const app = express();
+const fs = require('fs');
+const path = require('path');
+
+// Path of shared database
+const dbPath = path.join(__dirname, '../../database.json'); 
 
 app.use(express.json());
 
-//middleware to log incoming requests
 app.use((req, res, next) => {
-    console.log(`request: ${req.method} from ${req.url}`);
+    console.log(`Category Service received: ${req.method} from ${req.url}`);
     next(); 
 });
 
 app.get('/categories', (req, res) => {
-    res.json([
-        { id: 1, name: "Electronics" },
-        { id: 2, name: "Books" }
-    ]);
+    const data = JSON.parse(fs.readFileSync(dbPath));
+    res.json(data.categories);
 });
 
-// Start the server on Port 3001
 app.listen(3001, () => {
-    console.log(`Category Service is running on http://localhost:3001/categories`);
+    console.log(`Category Microservice running on http://localhost:3001/categories`);
 });

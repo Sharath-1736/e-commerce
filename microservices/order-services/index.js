@@ -1,23 +1,38 @@
 const express = require('express');
 const app = express();
+const fs = require('fs');
+const path = require('path');
+
+const dbPath = path.join(__dirname, '../../database.json');
 
 app.use(express.json());
 
-//middleware to log incoming requests
+// Middleware for logging requests
 app.use((req, res, next) => {
-    console.log(`request: ${req.method} from ${req.url}`);
-    next(); 
+    console.log(`Order Service: ${req.method} @ ${req.url}`);
+    next();
 });
 
-app.get('/orders', (req, res) => {
-    res.json([
-        { id: 1, productId: 101, quantity: 2 },
-        { id: 2, productId: 102, quantity: 1 },
-        { id: 3, productId: 103, quantity: 5 }
-    ]);
+// Endpoint to create a new order
+app.post('/orders', (req, res) => {
+    const data = JSON.parse(fs.readFileSync(dbPath));
+    const { productId, quantity } = req.body;
+
+    const product = data.products.find(p => p.id === productId);
+
+    if (!product || product.stock < quantity) {
+        return res.status(400).json({ message: "Order failed: Invalid product or stock" });
+    }
+
+    //Update stock and save order
+    product.stock -= quantity;
+    const newOrder = { id: Date.now(), productId, quantity, total: product.price * quantity };
+    data.orders.push(newOrder);
+
+    fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+    res.status(201).json(newOrder);
 });
 
-// Start the server on Port 3002
-app.listen(3002, () => {
-    console.log(`Order Service is running on http://localhost:3002/orders`);
+app.listen(3003, () => {
+    console.log(`Order Microservice running on http://localhost:3003/orders`);
 });

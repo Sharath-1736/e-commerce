@@ -1,36 +1,42 @@
-{
-  "products": [
-    {
-      "id": 1,
-      "productName": "Wireless Mouse",
-      "price": 800,
-      "category": "Electronics",
-      "stock": 10
-    },
-    {
-      "id": 2,
-      "productName": "Gaming Keyboard",
-      "price": 1500,
-      "category": "Electronics",
-      "stock": 3
-    }
-  ],
-  "categories": [
-    {
-      "id": 1,
-      "categoryName": "Electronics"
-    },
-    {
-      "id": 2,
-      "categoryName": "Home Appliances"
-    }
-  ],
-  "orders": [
-    {
-      "id": 1,
-      "productId": 2,
-      "quantity": 2,
-      "totalPrice": 3000
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "productName": "Wireless Mouse",
+    "slug": "wireless-mouse",
+    "price": 800,
+    "category": "Electronics",
+    "stock": 10
+  },
+  {
+    "id": 2,
+    "productName": "Gaming Keyboard",
+    "slug": "gaming-keyboard",
+    "price": 1500,
+    "category": "Electronics",
+    "stock": 5
+  },
+  {
+    "id": 3,
+    "productName": "Ergonomic Chair",
+    "slug": "ergonomic-chair",
+    "price": 4500,
+    "category": "Furniture",
+    "stock": 3
+  },
+  {
+    "id": 4,
+    "productName": "USB-C Hub",
+    "slug": "usb-c-hub",
+    "price": 1200,
+    "category": "Accessories",
+    "stock": 15
+  },
+  {
+    "id": 5,
+    "productName": "Standing Desk",
+    "slug": "standing-desk",
+    "price": 8000,
+    "category": "Furniture",
+    "stock": 2
+  }
+]
